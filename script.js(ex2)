@@ -1,0 +1,28 @@
+let formulaire=document.getElementById("formulaire");
+let tacheInput=document.getElementById("tacheInput");
+let listeTaches=document.getElementById("listeTaches");
+formulaire.addEventListener("submit",function(event){
+     event.preventDefault();
+    let texteTache=tacheInput.value;
+    if (texteTache==""){
+        alert("veuillez entrer une tache");
+        return;
+    }
+    let li=document.createElement("li");
+    li.textContent=texteTache+"";
+    let boutonAccomplie=document.createElement("button");
+    boutonAccomplie.textContent="Acomplie";
+    let boutonSupprimer=document.createElement("button");
+    boutonSupprimer.textContent="supprimer";
+    boutonAccomplie.addEventListener("click",function(){
+        li.classList.toggle("accomplie");
+    });
+    boutonSupprimer.addEventListener("click",function(){
+        li.remove();
+     });
+li.appendChild(boutonAccomplie);
+li.appendChild(boutonSupprimer);
+listeTaches.appendChild(li);
+tacheInput.value="";
+});
+   
